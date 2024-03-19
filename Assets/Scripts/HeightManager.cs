@@ -36,7 +36,7 @@ public class HeightManager : MonoBehaviour
             if (Height >= 100)
             {
                 
-              other.gameObject.GetComponent<Transform>.position.y = positioner.position.y;
+              //other.gameObject.GetComponent<Transform>.position.y = positioner.position.y;
             }
         }
     }
