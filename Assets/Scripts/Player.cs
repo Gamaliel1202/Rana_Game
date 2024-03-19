@@ -11,12 +11,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float MovementSpeed = 10f;
+    public float MovementSpeedV = 10f;
     bool IsGrounded = false;
 
     Rigidbody2D rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
     float Movement = 0f;
+    float MovementV = 0f;
 
 
 
@@ -32,6 +34,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movement = Input.GetAxis("Horizontal") * MovementSpeed;
+
+        MovementV = Input.GetAxis("Vertical") * MovementSpeedV;
+
        // IsGrounded = false;
         //animator.GetBool("IsJumping");
 
@@ -43,6 +48,10 @@ public class Player : MonoBehaviour
         velocity.x = Movement;
         rb.velocity = velocity;
         theAnimations(velocity);
+
+        //Vector2 velocityV = rb.velocity;
+        //velocityV.y = MovementV;
+        //rb.velocity = velocityV;
 
 
 
