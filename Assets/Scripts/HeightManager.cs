@@ -9,8 +9,14 @@ public class HeightManager : MonoBehaviour
 {
     public Transform Heightter;
     public Transform positioner;
+   // public Transform Plat;
+
     public TextMeshProUGUI Puntaje;
     [SerializeField] private float Height;
+
+    // [Header] ("PlatformType")
+
+    [SerializeField] private List<Mesh> meshes = new List<Mesh>();
 
 
     public void Start()
@@ -20,25 +26,38 @@ public class HeightManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-       
-        Puntaje.text=("Altura: "+ (Mathf.FloorToInt(Heightter.position.y)-Height)) ;
+
+        Puntaje.text = ("Altura: " + (Mathf.FloorToInt(Heightter.position.y) - Height));
 
 
 
-       
     }
 
 
-    public void OnTriggerEnter(Collider other)
+
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Plataforma") ){
-        
-            if (Height >= 100)
+        if (other.gameObject.CompareTag("Plataformas"))
+        {
+            Debug.Log("posicionado");
+
+            if (Height <= 100)
             {
-                
-              //other.gameObject.GetComponent<Transform>.position.y = positioner.position.y;
+                Vector3 platformPosition = other.transform.position;
+                other.gameObject.transform.position =  new Vector3(transform.position.x, positioner.position.y, transform.position.z);
+
             }
         }
     }
 
+    //private void Positionator()
+    //{
+        //Debug.Log("posicionado");
+
+
+    //    Vector3 platformPosition = transform.position;
+    //    transform.position = new Vector3(transform.position.x, positioner.position.y, transform.position.z);
+
+    //}
 }

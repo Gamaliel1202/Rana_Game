@@ -7,21 +7,44 @@ public class Platform : MonoBehaviour
 
 
     public float JumpForce = 10f;
+    public Transform traspaserPlayer;
+    public Transform traspaserPlatform;
+    [SerializeField] private bool yallego=false;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void FixedUpdate()
     {
-
-        if (collision.relativeVelocity.y <= 0f)
+        if (traspaserPlayer.position.y - traspaserPlatform.position.y >= 0)
         {
+            yallego = true;
+            Debug.Log(yallego);
+        }
+        else if(traspaserPlayer.position.y - traspaserPlatform.position.y <= 0)
+        {
+            yallego = false;
+            Debug.Log(yallego);
 
-            Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
-            if (rb != null)
+        }
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag ("Player"))
+        {
+            Rigidbody rb = collision.GetComponent<Rigidbody>();
+
+
+
+            if (yallego == true)
             {
 
-                Vector2 velocity = rb.velocity;
-                velocity.y = JumpForce;
-                rb.velocity = velocity;
+                if (rb != null)
+                {
 
+                    Vector3 velocity = rb.velocity;
+                    velocity.y = JumpForce;
+                    rb.velocity = velocity;
+
+                }
             }
         }
     }

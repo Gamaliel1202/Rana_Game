@@ -7,14 +7,14 @@ using UnityEngine;
 
 
 
-[RequireComponent(typeof(Rigidbody2D))]
+//[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     public float MovementSpeed = 10f;
     public float MovementSpeedV = 10f;
-    bool IsGrounded = false;
+   bool IsGrounded = false;
 
-    Rigidbody2D rb;
+    Rigidbody rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
     float Movement = 0f;
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -37,14 +37,14 @@ public class Player : MonoBehaviour
 
         MovementV = Input.GetAxis("Vertical") * MovementSpeedV;
 
-       // IsGrounded = false;
-        //animator.GetBool("IsJumping");
+       IsGrounded = false;
+       // animator.GetBool("IsJumping");
 
     }
 
     void FixedUpdate()
     {
-        Vector2 velocity = rb.velocity;
+        Vector3 velocity = rb.velocity;
         velocity.x = Movement;
         rb.velocity = velocity;
         theAnimations(velocity);
@@ -60,24 +60,27 @@ public class Player : MonoBehaviour
         animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter(Collider collision)
     {
-        IsGrounded = true;
+      // IsGrounded = true;
         animator.SetBool("IsGrounded", true);
+       
+
     }
-    public void OnCollisionExit2D(Collision2D collision)
-    {
-        IsGrounded = false;
+    public void OnTriggerExit(Collider collision)
+    { 
+        
+        Debug.Log("ToichGround");
+       //IsGrounded = false;
         animator.SetBool("IsGrounded", false);
 
     }
-
-    public void theAnimations(Vector2 moveSpeed)
+ 
+    public void theAnimations(Vector3 moveSpeed)
     {
 
         if (moveSpeed.x >= 0f)
         {
-            Debug.Log("flipeado");
 
             spriteRenderer.flipX = true;
         }
@@ -86,19 +89,7 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-     /*   if(moveSpeed.y > 0f )
-        {
-            if (!IsGrounded)
-            {
-                animator.Play("Impact");
-            }
-            else if (IsGrounded)
-            {
-                animator.Play("Jump");
-
-            }
-         
-        }*/
+     
         
     }
 }

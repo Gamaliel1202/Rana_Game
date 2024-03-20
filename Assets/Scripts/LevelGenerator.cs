@@ -27,6 +27,7 @@ public class LevelGenerator : MonoBehaviour
             spawnPosition.y += Random.Range(minY, maxY);
             spawnPosition.x = Random.Range(-LevelWidth, LevelWidth);
         Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+
         }
     }
 
