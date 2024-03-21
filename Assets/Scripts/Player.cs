@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 {
     public float MovementSpeed = 10f;
     public float MovementSpeedV = 10f;
-   bool IsGrounded = false;
+    bool IsGrounded = false;
 
     Rigidbody rb;
     Animator animator;
@@ -37,8 +37,8 @@ public class Player : MonoBehaviour
 
         //MovementV = Input.GetAxis("Vertical") * MovementSpeedV;
 
-       IsGrounded = false;
-       // animator.GetBool("IsJumping");
+        IsGrounded = false;
+        // animator.GetBool("IsJumping");
 
     }
 
@@ -56,37 +56,41 @@ public class Player : MonoBehaviour
 
 
 
-       // animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
+        // animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
         animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
     public void OnTriggerEnter(Collider collision)
     {
-      // IsGrounded = true;
+        // IsGrounded = true;
         animator.SetBool("IsGrounded", true);
-       
+        Debug.Log("TouchGround");
 
     }
     public void OnTriggerExit(Collider collision)
-    { 
-        
-        Debug.Log("TouchGround");
-       //IsGrounded = false;
+    {
+
+
+        //IsGrounded = false;
         animator.SetBool("IsGrounded", false);
 
     }
- 
+
     public void theAnimations(Vector3 moveSpeed)
     {
 
-        if (moveSpeed.x >= 0f)
+        if (moveSpeed.x > 0f)
         {
 
             spriteRenderer.flipX = true;
         }
-        else if (moveSpeed.x <= 0f)
-        { 
+        else if (moveSpeed.x < 0f)
+        {
             spriteRenderer.flipX = false;
+        }
+        else if (moveSpeed.x == 0f)
+        {
+            spriteRenderer.flipY = spriteRenderer.flipY;
         }
 
      

@@ -11,19 +11,18 @@ public class Platform : MonoBehaviour
     public Transform traspaserPlatform;
     [SerializeField] private bool yallego=false;
 
+    private void Awake()
+    {
+        yallego = false;
+    }
     private void FixedUpdate()
     {
         if (traspaserPlayer.position.y - traspaserPlatform.position.y >= 0)
         {
             yallego = true;
-            Debug.Log(yallego);
+          // Debug.Log(yallego);
         }
-        else if(traspaserPlayer.position.y - traspaserPlatform.position.y <= 0)
-        {
-            yallego = false;
-            Debug.Log(yallego);
-
-        }
+       
     }
 
     void OnTriggerEnter(Collider collision)

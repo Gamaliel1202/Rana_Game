@@ -12,6 +12,8 @@ public class LevelGenerator : MonoBehaviour
     public float LevelWidth = 3f;
     public float minY = .2f;
     public float maxY = 1.5f;
+   // public Transform camara;
+    [SerializeField] private Vector3 rotationfijada;
 
 
 
@@ -26,7 +28,8 @@ public class LevelGenerator : MonoBehaviour
 
             spawnPosition.y += Random.Range(minY, maxY);
             spawnPosition.x = Random.Range(-LevelWidth, LevelWidth);
-        Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+            
+        Instantiate(platformPrefab, spawnPosition, Quaternion.LookRotation(rotationfijada));
 
         }
     }
