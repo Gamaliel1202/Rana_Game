@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     Animator animator;
     SpriteRenderer spriteRenderer;
     float Movement = 0f;
-    float MovementV = 0f;
+    //float MovementV = 0f;
 
 
 
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     {
         Movement = Input.GetAxis("Horizontal") * MovementSpeed;
 
-        MovementV = Input.GetAxis("Vertical") * MovementSpeedV;
+        //MovementV = Input.GetAxis("Vertical") * MovementSpeedV;
 
        IsGrounded = false;
        // animator.GetBool("IsJumping");
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
     public void OnTriggerExit(Collider collision)
     { 
         
-        Debug.Log("ToichGround");
+        Debug.Log("TouchGround");
        //IsGrounded = false;
         animator.SetBool("IsGrounded", false);
 
