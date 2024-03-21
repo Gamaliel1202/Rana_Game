@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0af08a5b603a4a945b5700111109b6ea
+guid: b9e72d332cdb5714785c30b10eaf0127
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Muerte_0
+      name: "247 sin t\xEDtulo_20240321101356_104803_0"
       rect:
         serializedVersion: 2
-        x: 41
-        y: 266
-        width: 1054
-        height: 843
+        x: 28
+        y: 390
+        width: 1220
+        height: 496
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bc4309160b90754d8b62f050376e3e3
-      internalID: -1108564294
+      spriteID: f27d4c2dfab3dee4fb4113b182e224db
+      internalID: -1084890961
       vertices: []
       indices: 
       edges: []
@@ -133,7 +133,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5bc66e1beebbea84f96f74c91ed3a283
+    spriteID: 3789cad24a6c08a46be0a007e2ce2cd5
     internalID: 0
     vertices: []
     indices: 
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Muerte_0: -1108564294
+      "247 sin t\xEDtulo_20240321101356_104803_0": -1084890961
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
