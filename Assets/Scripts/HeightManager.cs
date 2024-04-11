@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,8 +21,10 @@ public class HeightManager : MonoBehaviour
 
     private Mesh actualObjeto;
 
-    private float Altura;
+    public GameObject base3;
 
+    public static float Altura;
+    
 
     public void Start()
     {
@@ -33,9 +36,15 @@ public class HeightManager : MonoBehaviour
     public void FixedUpdate()
     {
 
-        Puntaje.text = ("Altura: " + (Mathf.FloorToInt(Heightter.position.y) - Height));
+        var score = (Mathf.FloorToInt(Heightter.position.y) - Height);
 
-         Altura = Height *0.1f;
+        Puntaje.text = ("Altura: " + score);
+
+        Altura = Height * 0.1f;
+
+        PlayerPrefs.SetFloat("HighScore", score);
+
+
 
 
     }
@@ -54,8 +63,10 @@ public class HeightManager : MonoBehaviour
                 Vector3 platformPosition = other.transform.position;
                 other.gameObject.transform.position = new Vector3(transform.position.x, positioner.position.y, transform.position.z);
 
+                //Instantiate(base3, transform.position, Quaternion.identity);
+
                 ///Pendiente
-                other.GameObject<MeshRenderer>(Mesh) = actualObjeto = plataformas[1];
+                //other.GameObject<MeshRenderer>(Mesh) = actualObjeto = plataformas[0];
 
 
             }

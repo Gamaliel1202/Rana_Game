@@ -42,6 +42,7 @@ public class Platform : MonoBehaviour
                     Vector3 velocity = rb.velocity;
                     velocity.y = JumpForce;
                     rb.velocity = velocity;
+                    Destroy(this);
 
                 }
             }

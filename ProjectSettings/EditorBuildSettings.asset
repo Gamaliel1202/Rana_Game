@@ -4,5 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MenuInicial.unity
+    guid: 72b5abedb5a28c042bb1c4b8b27b862f
+  - enabled: 1
+    path: Assets/Rana_Game.unity
+    guid: bbac3839314052745933843780ec163c
+  - enabled: 1
+    path: Assets/GameOver.unity
+    guid: 6642938cb3612c743a2ee04410767851
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
