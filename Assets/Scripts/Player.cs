@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Properties;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
@@ -12,7 +13,11 @@ public class Player : MonoBehaviour
 {
 
 
-    [SerializeField] private GameObject  GameOver;
+    [SerializeField] private GameObject GameOver;
+    [SerializeField] private GameObject Playerer;
+    [SerializeField] private AudioClip Ribbit;
+
+
     public float MovementSpeed = 10f;
     //public float MovementSpeedV = 10f;
     bool IsGrounded = false;
@@ -31,6 +36,9 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+
+        GameOver.SetActive(false);
     }
 
     // Update is called once per frame
@@ -69,24 +77,26 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.CompareTag(("Enemy")))
         {
-
-            Debug.Log("TOCOENEMIGO");
+            
+          //  Debug.Log("TOCOENEMIGO");
             animator.SetBool("Death", true);
-            gameObject.layer.ToString("Cosas que no tocan nada");
+           
+            Playerer.gameObject.layer = 6;
 
             GameOver.SetActive(true);
 
         }
-        else if(collision.gameObject.CompareTag("Plataformas"));
-            {
-        animator.SetBool("IsGrounded", true);
-        Debug.Log("TouchGround");
+        else if (collision.gameObject.CompareTag("Plataformas")) 
+        {
+            animator.SetBool("IsGrounded", true);
+          //  Debug.Log("TouchGround");
             //reproducir audio en salto
-            GameObject.Find("Ribbit").GetComponent<AudioSource>();
-            
+          //  GameObject.Find("Ribbit").GetComponent<AudioSource>();
+          
+           
 
-        } 
-       
+        }
+
 
 
     }
@@ -98,17 +108,11 @@ public class Player : MonoBehaviour
         animator.SetBool("IsGrounded", false);
 
     }
-    
-    public void OnTriggerEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag(("Enemy")))
-        {
 
-            Debug.Log("TOCOENEMIGO");
-            animator.SetBool("Death", true);
+   
 
-        }
-        }
+        
+        
 
 
 

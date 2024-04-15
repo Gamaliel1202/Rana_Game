@@ -10,27 +10,33 @@ public class HeightManager : MonoBehaviour
 {
     public Transform Heightter;
     public Transform positioner;
-   // public Transform Plat;
+    //public Transform Plat;
 
     public TextMeshProUGUI Puntaje;
     [SerializeField] private float Height;
 
-    // [Header] ("PlatformType")
+    [Header("PlatformType")]
 
-    [SerializeField] private List<Mesh> plataformas = new List<Mesh>();
+   // [SerializeField] private List<Mesh> plataformas = new List<Mesh>();
 
     private Mesh actualObjeto;
 
     public GameObject base3;
 
     public static float Altura;
-    
+
+
+
+
+
+
+
 
     public void Start()
     {
         Height = Mathf.FloorToInt(Heightter.position.y);
 
-        actualObjeto = plataformas[0];
+        //actualObjeto = plataformas[0];
     }
 
     public void FixedUpdate()
@@ -52,7 +58,7 @@ public class HeightManager : MonoBehaviour
 
 
 
-    private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Plataformas"))
         {
@@ -63,15 +69,15 @@ public class HeightManager : MonoBehaviour
                 Vector3 platformPosition = other.transform.position;
                 other.gameObject.transform.position = new Vector3(transform.position.x, positioner.position.y, transform.position.z);
 
-                //Instantiate(base3, transform.position, Quaternion.identity);
+                Instantiate(base3, transform.position, Quaternion.identity);
 
-                ///Pendiente
-                //other.GameObject<MeshRenderer>(Mesh) = actualObjeto = plataformas[0];
+                / Pendiente
+                other.GameObject<MeshRenderer>(Mesh) = actualObjeto = plataformas[0];
 
 
             }
         }
     }
+   */
 
- 
 }

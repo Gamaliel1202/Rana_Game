@@ -11,17 +11,26 @@ public class Platform : MonoBehaviour
     public Transform traspaserPlatform;
     [SerializeField] private bool yallego=false;
 
+    [SerializeField] Transform elparent;
     private void Awake()
     {
         yallego = false;
     }
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() { 
+    //{ float posicionactual=elparent.position.y;
+    //  if (posicionactual != elparent.position.y ) 
+    //    {
+    //        yallego = false;
+            
+        
+        
+
         if (traspaserPlayer.position.y - traspaserPlatform.position.y >= 0)
         {
             yallego = true;
           // Debug.Log(yallego);
         }
+
        
     }
 
@@ -42,8 +51,8 @@ public class Platform : MonoBehaviour
                     Vector3 velocity = rb.velocity;
                     velocity.y = JumpForce;
                     rb.velocity = velocity;
-                    Destroy(this);
 
+                    yallego = false;
                 }
             }
         }

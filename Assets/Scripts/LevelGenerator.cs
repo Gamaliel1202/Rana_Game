@@ -9,34 +9,35 @@ public class LevelGenerator : MonoBehaviour
     public GameObject platformPrefab;
 
     public int numberOfPlatforms = 100;
-    public float LevelWidth = 3f;
-    public float minY = .2f;
-    public float maxY = 1.5f;
-   // public Transform camara;
-    [SerializeField] private Vector3 rotationfijada;
+    public Transform Level_Right;
+    public Transform Level_Left;
 
+    public float minY = 1.2f;
+    public float maxY = 1.5f; 
+    // public Transform camara;
+    //[SerializeField] private Vector3 rotationfijada;
 
-
-    // Start is called before the first frame update
+   
     void Start()
     {
+        
 
-        Vector3 spawnPosition = new Vector3();
 
-        for (int i = 0; i < numberOfPlatforms; i++)
-         {
 
-            spawnPosition.y += Random.Range(minY, maxY);
-            spawnPosition.x = Random.Range(-LevelWidth, LevelWidth);
-            
-        Instantiate(platformPrefab, spawnPosition, Quaternion.LookRotation(rotationfijada));
+            Vector3 spawnPosition = new Vector3(0,transform.position.y,0);
 
-        }
-    }
+            for (int i = 0; i < numberOfPlatforms; i++)
+            {
 
-    // Update is called once per frame
-    void Update()
-    {
+                spawnPosition.y += Random.Range(minY, maxY);
+                spawnPosition.x = Random.Range(Level_Left.position.x, Level_Right.position.x);
+
+                Instantiate(platformPrefab, spawnPosition, platformPrefab.transform.rotation,transform);
+
+            }
         
     }
+
+    
+
 }
