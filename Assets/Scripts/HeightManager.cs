@@ -15,9 +15,11 @@ public class HeightManager : MonoBehaviour
     public TextMeshProUGUI Puntaje;
     [SerializeField] private float Height;
 
+    public TextMeshProUGUI HighScorecanva;
+
     [Header("PlatformType")]
 
-   // [SerializeField] private List<Mesh> plataformas = new List<Mesh>();
+    // [SerializeField] private List<Mesh> plataformas = new List<Mesh>();
 
     private Mesh actualObjeto;
 
@@ -27,7 +29,7 @@ public class HeightManager : MonoBehaviour
 
 
 
-
+    public static float score;
 
 
 
@@ -35,6 +37,7 @@ public class HeightManager : MonoBehaviour
     public void Start()
     {
         Height = Mathf.FloorToInt(Heightter.position.y);
+        score = 0;
 
         //actualObjeto = plataformas[0];
     }
@@ -42,22 +45,28 @@ public class HeightManager : MonoBehaviour
     public void FixedUpdate()
     {
 
-        var score = (Mathf.FloorToInt(Heightter.position.y) - Height);
+        score = (Mathf.FloorToInt(Heightter.position.y) - Height);
 
-        Puntaje.text = ("Altura: " + score);
+        Puntaje.text = ("" + score);
 
         Altura = Height * 0.1f;
 
-        PlayerPrefs.SetFloat("HighScore", score);
+
+        if (score > PlayerPrefs.GetFloat("HighScore")) {
+
+            PlayerPrefs.SetFloat("HighScore", score);
+
+
+
+        }
+        HighScorecanva.text = ("HighScore " + PlayerPrefs.GetFloat("HighScore"));
 
 
 
 
     }
 
-
-
-
+    
    /* private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Plataformas"))

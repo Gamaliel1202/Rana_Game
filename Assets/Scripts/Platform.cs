@@ -12,6 +12,8 @@ public class Platform : MonoBehaviour
     [SerializeField] private bool yallego=false;
 
     [SerializeField] Transform elparent;
+
+    public AudioSource ribbit;
     private void Awake()
     {
         yallego = false;
@@ -51,6 +53,10 @@ public class Platform : MonoBehaviour
                     Vector3 velocity = rb.velocity;
                     velocity.y = JumpForce;
                     rb.velocity = velocity;
+
+                    AudioSource ribbit = collision.GetComponent<AudioSource>();
+
+                    ribbit.Play();
 
                     yallego = false;
                 }
