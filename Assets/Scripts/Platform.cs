@@ -11,7 +11,9 @@ public class Platform : MonoBehaviour
     public Transform traspaserPlatform;
     [SerializeField] private bool yallego=false;
 
-    [SerializeField] Transform elparent;
+
+    
+
 
     public AudioSource ribbit;
     private void Awake()

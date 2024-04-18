@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Properties;
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
@@ -75,18 +75,8 @@ public class Player : MonoBehaviour
     {
         // IsGrounded = true;
 
-        if (collision.gameObject.CompareTag(("Enemy")))
-        {
-            
-          //  Debug.Log("TOCOENEMIGO");
-            animator.SetBool("Death", true);
-           
-            Playerer.gameObject.layer = 6;
-
-            GameOver.SetActive(true);
-
-        }
-        else if (collision.gameObject.CompareTag("Plataformas")) 
+      
+         if (collision.gameObject.CompareTag("Plataformas")) 
         {
             animator.SetBool("IsGrounded", true);
           //  Debug.Log("TouchGround");
@@ -115,7 +105,15 @@ public class Player : MonoBehaviour
         
 
 
+    public void Death()
+    {
+        animator.SetBool("Death", true);
 
+        Playerer.gameObject.layer = 6;
+
+        GameOver.SetActive(true);
+
+    }
     public void theAnimations(Vector3 moveSpeed)
     {
 
